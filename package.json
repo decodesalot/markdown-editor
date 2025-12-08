@@ -1,0 +1,16 @@
+{
+  "name": "md-preview",
+  "version": "1.0.0",
+  "description": "Simple markdown previewer",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch --style=compressed ./assets/scss/app.scss ./assets/dist/css/app.min.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@decodesalot",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "sass": "^1.94.1"
+  }
+}

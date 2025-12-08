@@ -1,0 +1,8 @@
+# Node modules
+node_modules/
+
+# Mac / OS-specific
+.DS_Store
+
+# Editor folders/files
+.vscode/

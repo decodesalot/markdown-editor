@@ -1,0 +1,231 @@
+@use "sass:map";
+
+$light: (
+    bg: #f8f9fa,
+    surface: #ffffff,
+    border: #e5e7eb,
+    text: #212529,
+    subtle-text: #6c757d,
+    editor-bg: #ffffff,
+    editor-text: #1f2937,
+    editor-focus: #f1f5f9,
+    preview-bg: #ffffff,
+    code-bg: #f1f3f5,
+    code-text: #212529,
+    blockquote-color: #6c757d,
+    sidebar-bg: #20242a,
+    sidebar-text: #c1c3c8,
+    sidebar-active-bg: #2b3036
+);
+
+$dark: (
+    bg: #0e0f12,
+    surface: #16171b,
+    border: rgba(255, 255, 255, 0.12),
+    text: #f4f5f7,
+    subtle-text: #bfc4cc,
+    editor-bg: #121317,
+    editor-text: #f4f5f7,
+    editor-focus: #1a1b1f,
+    preview-bg: #0f1014,
+    code-bg: #1a1b1f,
+    code-text: #e6e8eb,
+    blockquote-color: #c7cbd4,
+    sidebar-bg: #181a1f,
+    sidebar-text: #c1c3c8,
+    sidebar-active-bg: #2b3036
+);
+
+@mixin define-theme($theme) {
+    @each $key, $value in $theme {
+        --#{$key}: #{$value};
+    }
+}
+
+:root {
+    @include define-theme($light);
+}
+
+[data-bs-theme="dark"] {
+    @include define-theme($dark);
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.app {
+    flex: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 16px 22px;
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+
+    h1 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+    }
+}
+
+#editor {
+    height: 100%;
+    width: 100%;
+    border: none;
+    resize: none;
+    outline: none;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-y: auto;
+    transition: background 0.2s;
+    background: var(--editor-bg);
+    color: var(--editor-text);
+
+    &:focus {
+        background: var(--editor-focus);
+    }
+}
+
+#preview {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    line-height: 1.65;
+    background: var(--preview-bg);
+    color: var(--text);
+
+    p {
+        margin: 12px 0;
+    }
+
+    ul {
+        padding-left: 20px;
+
+        li {
+            margin: 6px 0;
+        }
+    }
+
+    blockquote {
+        padding-left: 12px;
+        font-style: italic;
+        margin: 18px 0;
+        color: var(--blockquote-color);
+        border-left: 4px solid var(--border);
+    }
+
+    code {
+        padding: 3px 6px;
+        border-radius: 6px;
+        font-size: 14px;
+        background: var(--code-bg);
+        color: var(--code-text);
+    }
+
+    pre {
+        padding: 14px 18px;
+        border-radius: 10px;
+        background: var(--code-bg);
+        color: var(--code-text);
+        overflow-x: auto;
+        margin: 20px 0;
+
+        code {
+            background: transparent;
+            padding: 0;
+            color: inherit;
+        }
+    }
+}
+
+.form-control {
+    color: var(--text);
+    border-color: var(--editor-bg);
+    background: var(--surface);
+}
+
+#theme-toggle {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    padding: 6px 12px;
+    cursor: pointer;
+    background: var(--editor-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+#sidebar {
+    height: 100%;
+    position: relative;
+
+    &:before {
+        content: "";
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100vh;
+        position: absolute;
+        background: var(--sidebar-bg);
+    }
+
+    a {
+        &.nav-link {
+            color: var(--sidebar-text);
+        }
+    }
+
+    .sidebar-heading {
+        position: relative;
+    }
+}
+
+.editor-container {
+    flex: 1;
+    height: calc(100vh - 100px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    border: 1px solid var(--border);
+
+    @media (max-width: 800px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+
+#editor {
+    @media (max-width: 800px) {
+        border-bottom: 1px solid var(--border);
+        border-right: none !important;
+    }
+}
+
+.saved-snippets-list {
+    .nav-link {
+        &.active {
+            background: var(--sidebar-active-bg);
+            color: #fff !important;
+            font-weight: 600;
+            border-radius: 4px;
+        }
+    }
+}
