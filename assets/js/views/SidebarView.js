@@ -19,7 +19,7 @@ export class SidebarView extends BaseView {
 
     getHtml(snippets = {}, activeSnippet = null) {
         return `
-        <div class="col-md-3 col-lg-2 px-lg-0 position-relative" data-sidebar-wrap>
+        <div class="col-md-3 col-lg-2 px-lg-0 position-relative vh-100" data-sidebar-wrap>
             <div class="p-4 border-end offcanvas offcanvas-start" id="sidebar">
                 <h6 class="sidebar-heading d-flex small justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase mb-4">
                     <span class="text-white">
