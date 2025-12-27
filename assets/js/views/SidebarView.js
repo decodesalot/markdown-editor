@@ -19,20 +19,24 @@ export class SidebarView extends BaseView {
 
     getHtml(snippets = {}, activeSnippet = null) {
         return `
-            <h6 class="sidebar-heading d-flex small justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase mb-4">
-                <span class="text-white">
-                    <i class="fa fa-bookmark fa-xs me-1"></i>
-                    Saved Snippets
-                </span>
-            </h6>
-            
-            <ul data-sidebar-list class="nav flex-column mb-2 saved-snippets-list text-capitalize">
-                ${this.#getListItemsHtml(snippets, activeSnippet)}
-            </ul>
+        <div class="col-md-3 col-lg-2 px-lg-0 position-relative" data-sidebar-wrap>
+            <div class="p-4 border-end offcanvas offcanvas-start" id="sidebar">
+                <h6 class="sidebar-heading d-flex small justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase mb-4">
+                    <span class="text-white">
+                        <i class="fa fa-bookmark fa-xs me-1"></i>
+                        My Saved Snippets
+                    </span>
+                </h6>
+                
+                <ul data-sidebar-list class="nav flex-column mb-2 saved-snippets-list text-capitalize">
+                    ${this.#getListItemsHtml(snippets, activeSnippet)}
+                </ul>
 
-            <a class="btn btn-primary position-absolute bottom-0 start-0 end-0 m-5" href="#" aria-label="Add new snippet" data-new-snippet-btn>
-                <i class="fa fa-plus-circle fa-sm"></i> Create New Snippet
-            </a>
+                <a class="btn btn-primary position-absolute bottom-0 start-0 end-0 m-5" href="#" aria-label="Add new snippet" data-new-snippet-btn>
+                    <i class="fa fa-plus-circle fa-sm"></i> Create New Snippet
+                </a>
+            </div>
+        </div>
         `;
     }
 

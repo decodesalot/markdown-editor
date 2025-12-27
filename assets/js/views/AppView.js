@@ -16,11 +16,7 @@ export class AppView extends BaseView {
         return `
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3 col-lg-2 px-lg-0">
-                        <div class="p-4 border-end" id="sidebar">
-                            ${this.sidebarView.getHtml()}
-                        </div>
-                    </div>
+                    ${this.sidebarView.getHtml()}
                     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-0 app">
                         ${this.headerView.getHtml()}
                         <div class="px-4 py-3">

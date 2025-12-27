@@ -17,13 +17,15 @@ export class HeaderView extends BaseView {
 
     getHtml() {
         return `
-            <header class="shadow-sm" id="main-header" data-header-wrapper>
+            <header class="shadow-sm d-flex align-items-center" id="main-header" data-header-wrapper>
                 <h1>
                     <span class="text-capitalize" data-active-title>Untitled Snippet</span>
-                    
-                    <button data-save-header-btn class="btn btn-sm btn-link ms-2 d-none">Save Changes</button>
-                    <button data-theme-toggle class="btn btn-sm btn-outline-secondary" id="theme-toggle" type="button"><i class="fa fa-sun"></i></button>
+                    <button data-save-header-btn class="btn btn-sm btn-link ms-2 d-none fw-medium p-0">Save Changes</button>
                 </h1>
+                <div class="ms-auto">
+                    <button data-bs-toggle="offcanvas" data-bs-target="#sidebar" class="btn btn-sm btn-outline-secondary border d-md-none" id="sidebar-toggle" type="button"><i class="fa fa-ellipsis"></i></button>
+                    <button data-theme-toggle class="btn btn-sm btn-outline-secondary" id="theme-toggle" type="button"><i class="fa fa-sun"></i></button>
+                </div>
             </header>
         `;
     }
